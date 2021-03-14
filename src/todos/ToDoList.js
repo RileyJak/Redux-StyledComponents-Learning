@@ -3,11 +3,21 @@ import { connect } from "react-redux";
 import ToDoListItem from "./ToDoListItem";
 import ToDoForm from "./ToDoForm";
 import { removeTodo, markTodoAsCompleted } from "./actions";
+import styled from "styled-components";
 
-import "./ToDoList.css";
+// === STYLED COMPONENT SYNTAX ===
+// const BigRedText = styled.{html element}`
+// 	font-size: 48px;
+// 	color: #ff0000;
+// `;
+
+const ListWrapper = styled.div`
+	max-width: 700px;
+	margin: auto;
+`;
 
 const TodoList = ({ todos = [], onRemovePressed, onCompletedPressed }) => (
-	<div className="list-wrapper">
+	<ListWrapper>
 		<ToDoForm />
 		{todos.map((todo) => (
 			<ToDoListItem
@@ -16,7 +26,7 @@ const TodoList = ({ todos = [], onRemovePressed, onCompletedPressed }) => (
 				onCompletedPressed={onCompletedPressed}
 			/>
 		))}
-	</div>
+	</ListWrapper>
 );
 
 const mapStateToProps = (state) => ({
